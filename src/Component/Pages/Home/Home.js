@@ -13,6 +13,7 @@ import Appointment from './Appointment/Appointment';
 import Tastimonial from './Tastimonial/Tastimonial';
 import Review from './Review/Review';
 import ContactUs from './ContactUs/ContactUs';
+import Footer from '../../Shared/Footer/Footer';
 
 
 const Home = () => {
@@ -61,6 +62,12 @@ const Home = () => {
             <br /><br />
             <div>
                 <ContactUs></ContactUs>
+            </div>
+
+            <div>
+                <div>
+                    <Footer></Footer>
+                </div>
             </div>
         </div>
     );
