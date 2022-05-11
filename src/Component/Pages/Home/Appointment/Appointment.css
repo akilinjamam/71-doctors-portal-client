@@ -1,0 +1,22 @@
+@media screen and (max-width:1000px) {
+
+    .small-doctor {
+        display: none;
+
+    }
+
+    .the-gap {
+        display: none;
+    }
+
+    .the-margin {
+        margin-left: 26px;
+    }
+
+    .the-marginTop {
+        margin-top: 12px;
+    }
+
+
+
+}

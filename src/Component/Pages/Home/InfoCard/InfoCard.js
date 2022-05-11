@@ -1,9 +1,9 @@
 import React from 'react';
 
-const InfoCard = ({ img }) => {
+const InfoCard = ({ img, bgClass, title }) => {
     return (
         <div>
-            <div class="card lg:w-96 sm:w-80 bg-primary text-primary-content m-2">
+            <div className={`card lg:w-96 sm:w-80 ${bgClass} text-primary-content m-2`} >
                 <div class="flex p-7">
 
                     <div>
@@ -11,7 +11,7 @@ const InfoCard = ({ img }) => {
                     </div>
 
                     <div className='ml-5 text-white'>
-                        <h2 class="card-title">Card title!</h2>
+                        <h2 class="card-title">{title}</h2>
                         <p className='text-left'>If a dog chews shoes whose shoes does he choose?</p>
                     </div>
                 </div>
