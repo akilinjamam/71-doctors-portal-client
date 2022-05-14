@@ -21,7 +21,7 @@ const Appointment = () => {
                         <p className='the-margin'>Make an Appointment Today</p>
                         <p className='the-margin'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto magnam minima perferendis, excepturi alias commodi hic fugiat ipsam nam vitae veniam nostrum laudantium. Minus natus blanditiis similique voluptatibus assumenda ab alias ullam quam tenetur mollitia tempora, illum hic excepturi maiores?</p>
                         <br />
-                        <button class="the-margin btn btn-primary text-white">Get Started</button>
+                        <button className="the-margin btn btn-primary text-white">Get Started</button>
 
                     </div>
                 </div>

@@ -25,9 +25,9 @@ const Home = () => {
 
                 <Banner></Banner>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-                    <InfoCard title={'Opening Hour'} bgClass='bg-primary' img={clock}></InfoCard>
-                    <InfoCard title={'Visit Our Location'} bgClass='bg-accent' img={marker}></InfoCard>
-                    <InfoCard title={'Contact us Now'} bgClass='bg-primary' img={phone}></InfoCard>
+                    <InfoCard title={'Opening Hour'} bgclassName='bg-primary' img={clock}></InfoCard>
+                    <InfoCard title={'Visit Our Location'} bgclassName='bg-accent' img={marker}></InfoCard>
+                    <InfoCard title={'Contact us Now'} bgclassName='bg-primary' img={phone}></InfoCard>
                 </div>
                 <br /><br /><br />  <br />
                 <div>

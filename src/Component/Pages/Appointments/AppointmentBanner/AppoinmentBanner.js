@@ -11,8 +11,8 @@ const AppoinmentBanner = ({ selected, setSelected }) => {
 
     return (
         <div>
-            <div style={{ backgroundImage: `url(${background})` }} class="hero min-h-screen  text-left">
-                <div class="hero-content flex-col lg:flex-row-reverse">
+            <div style={{ backgroundImage: `url(${background})` }} className="hero min-h-screen  text-left">
+                <div className="hero-content flex-col lg:flex-row-reverse">
                     <img className='lg:w-1/2 sm:w-2/2' alt='' src={chair} />
                     <div>
                         <DayPicker mode="single"

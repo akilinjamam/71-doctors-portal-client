@@ -1,51 +1,42 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import auth from '../../../firebase.init';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import Loading from '../../Shared/Loading/Loading';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-
-const Login = () => {
-
+const SignUp = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [updateProfile, updating, uError] = useUpdateProfile(auth);
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useSignInWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
 
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    let from = location?.state?.from?.pathname || "/";
-
-
-    useEffect(() => {
-        if (gUser || user) {
-            console.log(gUser || user)
-            navigate(from, { replace: true });
-
-        }
-    }, [gUser, user, from, navigate])
+    const navigate = useNavigate()
 
     let showError;
 
-
-    if (gLoading || loading) {
+    if (gUser || user) {
+        console.log(gUser || user)
+    }
+    if (gLoading || loading || updating) {
         return <Loading></Loading>
     }
 
-    if (error || gError) {
+    if (error || gError || uError) {
 
-        showError = <p className='text-red-500'> {error?.message || gError?.message} </p>
+        showError = <p className='text-red-500'> {error?.message || gError?.message || uError?.message} </p>
     }
 
 
-    const onSubmit = data => {
-        signInWithEmailAndPassword(data.email, data.password)
+    const onSubmit = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password)
+        await updateProfile({ displayName: data.name })
+        navigate('/')
         console.log(data)
 
     };
@@ -72,9 +63,35 @@ const Login = () => {
 
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <p className='text-2xl text-primary'>Login</p>
+
+                    <p className='text-2xl text-primary'>Sign Up</p>
+
                     <form onSubmit={handleSubmit(onSubmit)}>
 
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+
+                            </label>
+                            <input
+                                type="name"
+                                placeholder="Type name"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("name", {
+                                    required: {
+                                        value: true,
+                                        message: 'name is required'
+                                    }
+
+                                })}
+                            />
+
+                            <label className="label">
+                                {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+
+
+                            </label>
+                        </div>
 
 
                         <div className="form-control w-full max-w-xs">
@@ -136,10 +153,10 @@ const Login = () => {
                             </label>
                         </div>
                         {showError}
-                        <input className='btn btn-primary w-full max-w-xs' type="submit" value="login" />
+                        <input className='btn btn-primary w-full max-w-xs' type="submit" value="signup" />
 
+                        <p>Have an Account in Doctors portal ? <Link className='text-primary' to='/login'>Login</Link> </p>
 
-                        <p>New to Account in Doctors portal ? <Link className='text-primary' to='/signup'>signup</Link> </p>
 
                     </form>
                     <div className="divider">OR</div>
@@ -155,4 +172,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;

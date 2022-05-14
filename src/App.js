@@ -12,6 +12,11 @@ import Contact from './Component/Pages/Contact/Contact';
 
 import Apointments from './Component/Pages/Appointments/Apointments';
 
+import SignUp from './Component/Pages/SignUp/SignUp';
+import RequireAuth from './Component/Pages/RequireAuth/RequireAuth';
+
+
+
 function App() {
   return (
     <div className="App">
@@ -21,8 +26,16 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/reviews' element={<Review></Review>}></Route>
-        <Route path='/appointment' element={<Apointments></Apointments>}></Route>
+        <Route path='/appointment' element={
+
+          <RequireAuth>
+            <Apointments></Apointments>
+          </RequireAuth>
+
+
+        }></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
+        <Route path='/signup' element={<SignUp></SignUp>}></Route>
       </Routes>
 
 
