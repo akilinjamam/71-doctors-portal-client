@@ -1,18 +1,29 @@
 import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
+import Loading from '../../../Shared/Loading/Loading';
 import AppointmentCart from '../AppointmentCart';
 import Modal from '../Modal/Modal';
 
 
 const AvailableAppointment = ({ selected }) => {
 
-    const [services, setServices] = useState([])
+    const formattedDate = format(selected, 'PP')
+    // const [services, setServices] = useState([])
     const [treatment, setTreatment] = useState(null)
-    useEffect(() => {
-        fetch('http://localhost:5000/service')
-            .then(res => res.json())
-            .then(data => setServices(data))
-    }, []);
+    const { data: services, isLoading, refetch } = useQuery(['available', formattedDate], () => fetch(`http://localhost:5000/available?date=${formattedDate}`)
+        .then(res => res.json()))
+
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
+    /*   useEffect(() => {
+          fetch(`http://localhost:5000/available?date=${formattedDate}`)
+              .then(res => res.json())
+              .then(data => setServices(data))
+      }, [formattedDate]); */
 
 
 
@@ -23,13 +34,13 @@ const AvailableAppointment = ({ selected }) => {
 
             <div className='grid lg:grid-cols-3 sm:grid-cols gap-5'>
                 {
-                    services.map(service => <AppointmentCart setTreatment={setTreatment} key={service._id} service={service} ></AppointmentCart>)
+                    services?.map(service => <AppointmentCart setTreatment={setTreatment} key={service._id} service={service} ></AppointmentCart>)
                 }
             </div>
 
             <div>
                 {
-                    treatment && <Modal setTreatment={setTreatment} selected={selected} treatment={treatment} ></Modal>
+                    treatment && <Modal setTreatment={setTreatment} selected={selected} treatment={treatment} refetch={refetch} ></Modal>
                 }
             </div>
 

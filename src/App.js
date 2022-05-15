@@ -16,11 +16,16 @@ import SignUp from './Component/Pages/SignUp/SignUp';
 import RequireAuth from './Component/Pages/RequireAuth/RequireAuth';
 
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 function App() {
   return (
     <div className="App">
       <Navbar></Navbar>
+
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/about' element={<About></About>}></Route>
@@ -36,10 +41,10 @@ function App() {
         }></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
+
       </Routes>
 
-
-
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
