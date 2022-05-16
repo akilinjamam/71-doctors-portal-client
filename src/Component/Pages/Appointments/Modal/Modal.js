@@ -75,7 +75,7 @@ const Modal = ({ treatment, selected, setTreatment, refetch }) => {
             <input type="checkbox" id="modal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <label htmlFor="modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label for="modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="font-bold text-lg mb-2">Booking for:  {name}</h3>
 
                     <form onSubmit={handleBook} action="">
@@ -96,7 +96,7 @@ const Modal = ({ treatment, selected, setTreatment, refetch }) => {
 
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

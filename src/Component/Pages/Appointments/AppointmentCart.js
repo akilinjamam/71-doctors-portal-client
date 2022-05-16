@@ -12,11 +12,11 @@ const AppointmentCart = ({ service, setTreatment }) => {
                     <div className="card-actions justify-center">
 
 
-                        <label onClick={() => setTreatment(service)} disabled={service.time.length === 0} htmlFor="modal" className="btn btn-primary text-white modal-button">Book Appointment</label>
+                        <label onClick={() => setTreatment(service)} disabled={service.time.length === 0} for="modal" className="btn btn-primary text-white modal-button">Book Appointment</label>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

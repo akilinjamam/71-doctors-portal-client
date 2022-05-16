@@ -12,11 +12,16 @@ const Navbar = () => {
 
     const menuItems = <>
 
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/about'>About</Link></li>
-        <li><Link to='/appointment'>Appointment</Link></li>
-        <li><Link to='/reviews'>Reviews</Link></li>
-        <li><Link to='/contact'>Contact Us</Link></li>
+        <li className='px-3'><Link to='/'>Home</Link></li>
+        <li className='px-3'><Link to='/about'>About</Link></li>
+        <li className='px-3'><Link to='/appointment'>Appointment</Link></li>
+        <li className='px-3'><Link to='/reviews'>Reviews</Link></li>
+        <li className='px-3 w-40 justify-center'><Link to='/contact'>Contact us</Link></li>
+
+        {
+            user && <li className=' mr-4'><Link to='/dashboard'>Dashboard</Link></li>
+
+        }
 
         <li>{user ? <button onClick={() => {
             signOut(auth)
@@ -46,6 +51,17 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
+
+                <div className="navbar-end lg:absolute">
+                    <label tabIndex="1" for="my-drawer-2" className="btn btn-ghost lg:hidden lg:relative">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
+
+
+                </div>
+
+
 
             </div>
 
