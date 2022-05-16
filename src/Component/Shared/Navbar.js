@@ -26,6 +26,7 @@ const Navbar = () => {
         <li>{user ? <button onClick={() => {
             signOut(auth)
             navigate('/login')
+            localStorage.removeItem('accessToken');
         }}
             className="btn btn-active btn-ghost">Sign Out</button> : <Link to='/login'>Login</Link>}</li>
 
