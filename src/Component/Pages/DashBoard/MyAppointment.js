@@ -10,7 +10,7 @@ const MyAppointment = () => {
     const [user] = useAuthState(auth)
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/bookings?patient=${user.email}`, {
+            fetch(`https://radiant-plains-45803.herokuapp.com/bookings?patient=${user.email}`, {
 
                 method: 'GET',
                 headers: {

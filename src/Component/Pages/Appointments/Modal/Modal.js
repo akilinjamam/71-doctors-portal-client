@@ -34,7 +34,7 @@ const Modal = ({ treatment, selected, setTreatment, refetch }) => {
 
         }
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://radiant-plains-45803.herokuapp.com/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

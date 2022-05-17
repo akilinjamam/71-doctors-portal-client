@@ -5,7 +5,7 @@ import Loading from '../../Shared/Loading/Loading';
 
 const AllUser = () => {
 
-    const { data: user, isLoading, refetch } = useQuery('user', () => fetch('http://localhost:5000/user', {
+    const { data: user, isLoading, refetch } = useQuery('user', () => fetch('https://radiant-plains-45803.herokuapp.com/user', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')} `
@@ -25,18 +25,35 @@ const AllUser = () => {
 
     const makeAdmin = (email, refetch) => {
 
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://radiant-plains-45803.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')} `
             },
         })
-            .then(res => res.json())
+            .then(res => {
+
+                if (res.status === 403) {
+                    toast.error('Failed to make an Admin. You must have to be an Admin');
+                }
+                return res.json()
+            })
             .then(data => {
                 console.log(data);
-                toast.success('successfully made an Admin');
-                refetch();
+                if (data.modifiedCount > 0) {
+
+                    toast.success('successfully made an Admin');
+                    refetch();
+                }
             })
+    }
+
+
+    const handleRolling = () => {
+
+
+        toast.error('alredy rolling as Admin')
+
     }
 
 
@@ -65,7 +82,7 @@ const AllUser = () => {
 
                                     <td> {index + 1} </td>
                                     <td> {u.email} </td>
-                                    <td>{u.role !== 'admin' && <button onClick={() => makeAdmin(u.email, refetch)} class="btn btn-xs">admin</button>}</td>
+                                    <td>{u.role !== 'admin' ? <button onClick={() => makeAdmin(u.email, refetch)} class="btn btn-xs">Make Admin</button> : <button onClick={handleRolling} class="btn btn-xs bg-red-600 border-0">Roling as Admin</button>}</td>
                                     <td><button class="btn btn-xs">delete</button></td>
                                 </tr>)
                             }

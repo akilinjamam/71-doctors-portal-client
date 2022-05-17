@@ -23,6 +23,7 @@ import MyAppointment from './Component/Pages/DashBoard/MyAppointment';
 import MyReviews from './Component/Pages/DashBoard/MyReviews';
 import MyHistory from './Component/Pages/DashBoard/MyHistory';
 import AllUser from './Component/Pages/DashBoard/AllUser';
+import RequireAdmin from './Component/Pages/RequireAdmin/RequireAdmin';
 
 
 
@@ -56,7 +57,7 @@ function App() {
           <Route index element={<MyAppointment></MyAppointment>}></Route>
           <Route path='reviews' element={<MyReviews></MyReviews>}></Route>
           <Route path='myhistory' element={<MyHistory></MyHistory>}></Route>
-          <Route path='alluser' element={<AllUser></AllUser>}></Route>
+          <Route path='alluser' element={<RequireAdmin><AllUser></AllUser></RequireAdmin>}></Route>
 
         </Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
