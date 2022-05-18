@@ -29,6 +29,15 @@ const DashBoard = () => {
                     <li><Link to='/dashboard/myhistory' > My History</Link></li>
                     {admin ? <li><Link className='btn bg-green-600 border-0 text-white' to='/dashboard/alluser' >Admin Access: users</Link></li> : <li><button onClick={() => { toast.error('you are not Admin') }} className=' btn border-0   bg-red-600 text-white'>Admin Access: users</button></li>}
 
+                    {
+                        admin && <>
+
+                            <li><Link to='/dashboard/addDoctor' >Add a Doctor</Link></li>
+                            <li><Link to='/dashboard/manageDoctor' >Manage Doctor</Link></li>
+
+                        </>
+                    }
+
                 </ul>
 
             </div>
