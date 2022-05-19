@@ -8,7 +8,7 @@ const ManageDoctor = () => {
 
     const [deleteDoctor, setDeleteDoctor] = useState(null)
 
-    const { data: doctors, isLoading, refetch } = useQuery('doctors', () => fetch('http://localhost:5000/doctor', {
+    const { data: doctors, isLoading, refetch } = useQuery('doctors', () => fetch('https://radiant-plains-45803.herokuapp.com/doctor', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -35,7 +35,7 @@ const ManageDoctor = () => {
                     </thead>
                     <tbody>
                         {
-                            doctors.map((d, index) => <DoctorsRow refetch={refetch} index={index} key={d._id} doctor={d} setDeleteDoctor={setDeleteDoctor} ></DoctorsRow>)
+                            doctors?.map((d, index) => <DoctorsRow refetch={refetch} index={index} key={d._id} doctor={d} setDeleteDoctor={setDeleteDoctor} ></DoctorsRow>)
                         }
 
                         {
@@ -47,7 +47,7 @@ const ManageDoctor = () => {
 
                 <div style={{ margin: 'auto' }}>
                     {
-                        doctors.length === 0 && <p className='text-gray-400 text-center'>Doctors not found</p>
+                        doctors?.length === 0 && <p className='text-gray-400 text-center'>Doctors not found</p>
                     }
                 </div>
             </div>

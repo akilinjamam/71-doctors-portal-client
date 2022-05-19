@@ -26,6 +26,7 @@ import AllUser from './Component/Pages/DashBoard/AllUser';
 import RequireAdmin from './Component/Pages/RequireAdmin/RequireAdmin';
 import AddDoctors from './Component/Pages/DashBoard/AddDoctors';
 import ManageDoctor from './Component/Pages/DashBoard/ManageDoctor';
+import Payment from './Component/Pages/DashBoard/Payment';
 
 
 
@@ -59,6 +60,7 @@ function App() {
           <Route index element={<MyAppointment></MyAppointment>}></Route>
           <Route path='reviews' element={<MyReviews></MyReviews>}></Route>
           <Route path='myhistory' element={<MyHistory></MyHistory>}></Route>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
           <Route path='alluser' element={<RequireAdmin><AllUser></AllUser></RequireAdmin>}></Route>
           <Route path='addDoctor' element={<RequireAdmin><AddDoctors></AddDoctors></RequireAdmin>}></Route>
           <Route path='manageDoctor' element={<RequireAdmin><ManageDoctor></ManageDoctor></RequireAdmin>}></Route>

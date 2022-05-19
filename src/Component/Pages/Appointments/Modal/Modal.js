@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import React, { useEffect } from 'react';
+
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../firebase.init';
 
@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 const Modal = ({ treatment, selected, setTreatment, refetch }) => {
 
-    const { name, time, _id } = treatment
+    const { name, time, _id, price } = treatment
     console.log(treatment)
 
     const [user] = useAuthState(auth)
@@ -30,6 +30,7 @@ const Modal = ({ treatment, selected, setTreatment, refetch }) => {
             slots,
             patient: user.email,
             patientName: user.displayName,
+            price: price,
             phone: event.target.phone.value
 
         }
@@ -77,6 +78,7 @@ const Modal = ({ treatment, selected, setTreatment, refetch }) => {
                 <div className="modal-box">
                     <label for="modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="font-bold text-lg mb-2">Booking for:  {name}</h3>
+                    <p className="font-bold text-lg mb-2">Fees:  {price}</p>
 
                     <form onSubmit={handleBook} action="">
                         <select name='time' className="select select-primary w-full max-w-xs mb-3">

@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 const AddDoctors = () => {
 
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
-    const { data: service, isLoading } = useQuery('service', () => fetch('http://localhost:5000/service').then(res => res.json()))
+    const { data: service, isLoading } = useQuery('service', () => fetch('https://radiant-plains-45803.herokuapp.com/service').then(res => res.json()))
 
 
     // 3 ways to store images
@@ -56,7 +56,7 @@ const AddDoctors = () => {
 
                     //sending this file to database mongodb
 
-                    fetch('http://localhost:5000/doctor', {
+                    fetch('https://radiant-plains-45803.herokuapp.com/doctor', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

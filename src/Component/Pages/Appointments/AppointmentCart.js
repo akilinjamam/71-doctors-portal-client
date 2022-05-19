@@ -9,6 +9,7 @@ const AppointmentCart = ({ service, setTreatment }) => {
                     <h2 className="text-xl text-primary">{service.name}</h2>
                     <p>{service.time.length > 0 ? <span>{service.time[0]}</span> : <span className='text-red-600'>Try another date</span>}</p>
                     <p> {service.time.length > 0 ? <span> {service.time.length} space available </span> : <span> {service.time.length} space available </span>} </p>
+                    <p>Price: ${service.price}</p>
                     <div className="card-actions justify-center">
 
 
