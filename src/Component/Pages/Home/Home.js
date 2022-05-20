@@ -29,7 +29,7 @@ const Home = () => {
                     <InfoCard title={'Visit Our Location'} bgclassName='bg-accent' img={marker}></InfoCard>
                     <InfoCard title={'Contact us Now'} bgclassName='bg-primary' img={phone}></InfoCard>
                 </div>
-                <br /><br /><br />  <br />
+                <br />
                 <div>
                     <p className='text-primary font-bold'>OUR SERVICE</p>
                     <p className='text-3xl'>Service We Provide</p>
